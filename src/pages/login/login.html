@@ -1,0 +1,38 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list no-lines>
+    <ion-item>
+      <button ion-button full icon-left (tap)="twitterLogin()">
+          <ion-icon name="logo-twitter">     
+          </ion-icon>
+          Twitter
+      </button>
+    </ion-item>
+
+    <ion-item>
+      <button ion-button full icon-left (tap)="googleLogin()">
+          <ion-icon name="logo-googleplus">   
+          </ion-icon>
+          Google+
+      </button>
+    </ion-item>
+
+    <ion-item>
+      <button ion-button full icon-left (tap)="facebookLogin()">
+          <ion-icon name="logo-facebook">            
+          </ion-icon>
+          Facebook
+      </button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

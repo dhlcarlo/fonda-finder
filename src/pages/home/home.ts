@@ -11,4 +11,8 @@ export class HomePage {
 
   }
 
+  toLogin(){
+    this.navCtrl.push('loginPage')
+  }
+
 }
