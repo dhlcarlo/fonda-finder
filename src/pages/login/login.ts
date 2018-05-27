@@ -1,38 +1,31 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { User } from '../../models/user';
+import { AngularFireAuth} from "angularfire2/auth";
 
-@IonicPage({
-  name: 'loginPage'
-})
+@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user = {} as User;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private AuthOf: AngularFireAuth) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+  async login(user:User) {
+    try {
+      const result = await this.AuthOf.auth.signInWithEmailAndPassword(user.email,user.password);
+      console.log(result)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
-  twitterLogin(){
-
-  }
-  googleLogin(){
-
-  }
-
-  facebookLogin(){
-    
+  register(){
+  this.navCtrl.push('RegisterPage')
   }
 
 }
