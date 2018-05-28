@@ -1,48 +1,62 @@
+<!--
 <ion-header>
-  <ion-navbar color="primary">
-    <ion-title>login</ion-title>
+
+  <ion-navbar color="dark">
+    <ion-title>
+    <ion-icon name="md-contact"></ion-icon>
+    &nbsp;Sign In</ion-title>
   </ion-navbar>
 
-</ion-header>
+</ion-header> -->
 
 
-<ion-content padding>
+<ion-content class="bg-img">
 
-  <ion-list no-lines>
-    <ion-item>
-      <button ion-button full icon-left (tap)="twitterLogin()">
-          <ion-icon name="logo-twitter">     
-          </ion-icon>
-          Twitter
-      </button>
-    </ion-item>
+  <div class="main-content">
+    <div padding text-center class="container-logo">
+      <img src="assets/imgs/logo.png">
+    </div>
+    <div text-center class="socialLogin" padding>
+      <button ion-button full class="google" (click)="socialLogin('google')"><ion-icon name="logo-google" style="margin-right: 12px;"></ion-icon>Inicia sesion con Google</button>
+      <button ion-button full class="facebook" (click)="socialLogin('facebook')"><ion-icon name="logo-facebook" style="margin-right: 12px;"></ion-icon> Inicia sesion con Facebook</button>
+    </div>
+    <div class="sepretor-or" padding-horizontal> <p>O</p></div>
 
-    <ion-item>
-      <button ion-button full icon-left (tap)="googleLogin()">
-          <ion-icon name="logo-googleplus">   
-          </ion-icon>
-          Google+
-      </button>
-    </ion-item>
+    <div padding class="container-bottom">
+    <form [formGroup]="authForm" (ngSubmit)="userLogin(loginData)">
 
-    <ion-item>
-      <button ion-button full icon-left (tap)="facebookLogin()">
-          <ion-icon name="logo-facebook">            
-          </ion-icon>
-          Facebook
-      </button>
-    </ion-item>
-  </ion-list>
-<ion-item>
-<ion-label floating>Email</ion-label>
-<ion-input type="text" [(ngModel)]="user.email"></ion-input>
-</ion-item>
+      <div class="errormsg">
+        <div *ngIf="email.errors && email.touched">
+            <p>Correo electronico requerido.</p>
+        </div>
+        <div *ngIf="password.errors && password.touched">
+            <p>Contraseña requerida.</p>
+        </div>
+      </div>
 
-<ion-item>
-  <ion-label floating>Contraseña</ion-label>
-  <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-  </ion-item>
+        <ion-list>
+          <ion-item padding-right>
+            <ion-label>
+              <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
+            </ion-label>
+            <ion-input [(ngModel)]="loginData.email" [formControl]="email" id="email" type="text" required placeholder="Correo *"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <ion-icon ios="ios-unlock" md="md-unlock"></ion-icon>
+            </ion-label>
+              <ion-input [(ngModel)]="loginData.password" [formControl]="password" id="password" type="{{passwordtype}}" required placeholder="Contraseña *"></ion-input>
+            <button ion-button clear class="eye-icon-btn" type="button" item-right (click)="managePassword()"><ion-icon name="{{passeye}}"></ion-icon></button>
+          </ion-item>
+        </ion-list>
+        <button type="submit" ion-button full color="dark" [disabled]="!authForm.valid">Iniciar sesion</button>
+    </form>
+    <div padding text-center class="form-bottom-text" ><a href="javascript:void(0);" (click)="forgetpassword()"> Olvido su contraseña?</a></div>
+        <div padding text-center class="form-bottom-text">
+          <label>No tienes una cuenta? <a href="javascript:void(0);" (click)="moveToRegister()">Registrarse</a></label>
+        </div>
 
-  <button ion-button (click)="login()"> Login</button>
-  <button ion-button color="light" (click)="register()"> Register</button>
+  </div>
+  </div>
+
 </ion-content>

@@ -1,0 +1,37 @@
+
+
+<ion-content class="bg-img">
+  <div class="main-content">
+    <div padding text-center class="container-logo" margin-bottom >
+      <img src="assets/imgs/logo.png">
+    </div>
+    <div padding text-center class="form-bottom-text">
+      <h3> Reiniciar Constraseña</h3>
+      <label>Introduce el correo electronico asociado a tu cuenta y revisa tu correo.</label>
+    </div>
+    <div text-center class="socialLogin" padding></div>
+      <div padding style="width: 100%;">
+      <form [formGroup]="authForm" (ngSubmit)="forgetPassword(forgetData.email)">
+
+        <div class="errormsg">
+          <div *ngIf="email.errors && email.touched"><p>Correo electronico Obligatorio.</p></div>
+        </div>
+
+        <ion-list>
+          <ion-item >
+            <ion-label><ion-icon ios="ios-mail" md="md-mail"></ion-icon></ion-label>
+            <ion-input [(ngModel)]="forgetData.email" [formControl]="email" id="email" type="email" required placeholder="Correo electronico *"></ion-input>
+          </ion-item>
+        </ion-list>
+        <button type="submit" ion-button full color="dark" [disabled]="!authForm.valid">Enviar</button>
+      </form>
+
+      <div padding text-center class="form-bottom-text">
+        <label>
+          <a href="javascript:void(0);" (click)="moveToLogin()">Volver al inicio</a>
+        </label>
+      </div>
+
+    </div>
+  </div>
+</ion-content>
