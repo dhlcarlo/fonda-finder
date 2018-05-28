@@ -1,6 +1,6 @@
 {
   "name": "fonda-finder",
-  "app_id": "",
+  "app_id": "dfa308eb",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
