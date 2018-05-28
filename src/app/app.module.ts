@@ -10,6 +10,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {  CONFIG_FIREBASE } from "./app.firebase.config";
 
+import { ComponentsModule } from '../components/components.module';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -17,6 +19,7 @@ import {  CONFIG_FIREBASE } from "./app.firebase.config";
   ],
   imports: [
     BrowserModule,
+    ComponentsModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(CONFIG_FIREBASE),
     AngularFireAuthModule
